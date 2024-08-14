@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Button } from "bootstrap";
+import { Link } from 'react-router-dom';
+
+
 
 
 function AllPokemon(){
@@ -38,7 +40,7 @@ function AllPokemon(){
 
     return (
     <>
-      <h1>Pokemon!</h1>
+      <h1>Pokemon</h1>
       <div className='container'>
         <div className='row'>
           {pokemon.map((poke) => {
@@ -46,10 +48,17 @@ function AllPokemon(){
             const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
             return (
               <div key={poke.name} className='card col-sm-2 mb-4 mx-4'>
-                <img src={imageUrl} alt={poke.name} className='card-img-top' />
-                <div className='card-body'>
-                  <h3 className='card-title text-center'>{poke.name}</h3>
-                </div>
+              <Link to={`/pokemon/${pokemonId}`}>
+                  <img
+
+                    src={imageUrl}
+                    alt={poke.name}
+                    className='card-img-top'
+                  />
+                  <div className='card-body'>
+                    <h3 className='card-title text-center'>{poke.name}</h3>
+                  </div>
+                </Link>
               </div>
             );
           })}
